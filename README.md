@@ -3,7 +3,7 @@ CCNS golang language study group at 2020 spring.
 
 ## Content
 - Markdown file notes
-- Example code for demostration
+- Example code for demonstration
 - Others study-group-related files
 
 ## Structure

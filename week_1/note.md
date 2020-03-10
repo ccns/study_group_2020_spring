@@ -10,7 +10,7 @@ tags: CCNS
 
 ----
 
-# 1.1 Hello world
+# 1.1 Hello World
 
 - Standard IO
 
@@ -97,7 +97,7 @@ func main() {
 ```
 ----
 
-# 1.3 Finding Duplicate Lines
+# 1.3 Finding Duplicated Lines
 
 - 事實上，我們很少拿 Golang 來進行複雜的字串操作
 
@@ -168,7 +168,7 @@ func main() {
 
 ----
 
-# 1.6 fetch Concurrently
+# 1.6 Fetch Concurrently
 
 - fetch concurrently
 
@@ -220,7 +220,7 @@ func fetch(url string, ch chan<- string) {
 
 ----
 
-# 1.7 Web server
+# 1.7 Web Server
 
 ## server_1
 
@@ -346,7 +346,7 @@ var _foo int
 var _123 int
 var fooBar int
 
-// not recommand
+// not recommended
 var foo_bar int
 
 // syntax error
@@ -371,7 +371,7 @@ var _foo int = 0
 
 func foo() {
 
-	// unused, because of not accessable out of func
+	// unused, because of not accessible out of func
 	// var _foo int = 1
 }
 
@@ -415,13 +415,13 @@ func main() {
 // expected 'package', found 'func'
 package main
 
-// dupclicate may cause :
+// duplicate may cause :
 // syntax error: non-declaration statement outside function body
 // package sub
 
 // skip may cause :
 // function main is undeclared in the main package
-func main() { /* Do somthing*/ }
+func main() { /* Do something*/ }
 ```
 
 ----
@@ -434,13 +434,13 @@ package main
 // single package import
 import "fmt"
 
-// multiple packages import
+// multiple package import
 import (
   "fmt"
   "os"
 )
 
-// prefered arrangement
+// preferred arrangement
 import (
   "standard packages"
   
@@ -453,12 +453,12 @@ import (
 ----
 
 ## var
-  - default value, no un-init var
+  - default value, no un-inited var
   - auto type map with list or func call
   - init 時機
     - 執行前
     - 被 import 前
-  - short declare(a declare, = is assign), error if re-declare
+  - short declare(a declaration, = is assignment), error if re-declare
 
 ```go=
 package main
@@ -563,8 +563,8 @@ func main() {
 ----
 
 ## type
-  - struct declare 十分重要，為程式架構核心能力
-  - 留意 compareable
+  - struct declaration 十分重要，為程式架構核心能力
+  - 留意 comparable
 
 ```go=
 package main

@@ -8,7 +8,7 @@ var _foo int = 0
 
 func foo() {
 
-	// unused, because of not accessable out of func
+	// unused, because of not accessible out of func
 	// var _foo int = 1
 }
 
