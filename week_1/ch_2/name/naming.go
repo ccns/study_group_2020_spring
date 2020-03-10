@@ -5,7 +5,7 @@ package main
 // var _123 int
 // var fooBar int
 
-// not recommand
+// not recommended
 // var foo_bar int
 
 // syntax error
