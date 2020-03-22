@@ -11,6 +11,6 @@ func main() {
 
 	fmt.Println(string(r))
 	fmt.Println(string(65))      // "A", not "65"
-	fmt.Println(string(0x4eac))  // "C"
+	fmt.Println(string(0x4eac))  // "京"
 	fmt.Println(string(1234567)) // invalid rune "�"
 }
