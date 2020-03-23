@@ -6,13 +6,13 @@ tags: CCNS
 
 # CH3 Basic Data Type
 
-# 3.1. Integers
+# 3.1 Integers
 
-## Int, uint
+## int, uint
 
-- 都有8, 16, 32, 64位元版本
-- 數值範圍跟C一樣用2補數去推
-  - ex: int8的數值範圍: $-2^{8-1} \sim 2^{8-1}-1= -128 \sim 127$
+- 都有 8, 16, 32, 64 位元版本
+- 數值範圍跟 C 一樣用 2 補數去推
+  - ex: int8 的數值範圍: $-2^{8-1} \sim 2^{8-1}-1= -128 \sim 127$
 
 
 ```go=
@@ -31,10 +31,10 @@ func main() {
 ```
 ## rune, byte, uintptr
 
-- 兩者都是data type的別名(alias)
-- rune代表**int32**, 用來代表一個Unicode code point  ~~盧恩符文是你~~
-- byte代表**uint8**
-- uintptr拿來存pointer, 第13章的時候會有用來處理unsafe package的example
+- 兩者都是 data type 的別名 (alias)
+- rune 代表 **int32**, 用來代表一個 Unicode code point  ~~盧恩符文是你~~
+- byte 代表 **uint8**
+- uintptr 拿來存 pointer, 第 13 章的時候會有用來處理 unsafe package 的 example
 
 
 
@@ -57,9 +57,9 @@ var y uint8 = 1<<1 | 1<<2
 func main (){
       fmt.Printf("%08b\n", x)    // "00100010", the set {1, 5}
       fmt.Printf("%08b\n", y)    // "00000110", the set {1, 2}
-      fmt.Printf("%08b\n", x&y)  // "00000010", theintersection {1}
+      fmt.Printf("%08b\n", x&y)  // "00000010", the intersection {1}
       fmt.Printf("%08b\n", x|y)  // "00100110", the union {1, 2, 5}
-      fmt.Printf("%08b\n", x^y)  // "00100100", the symmetric  difference {2, 5}
+      fmt.Printf("%08b\n", x^y)  // "00100100", the symmetric difference {2, 5}
       fmt.Printf("%08b\n", x&^y) // "00100000", the difference {5}
 	  
       for i := uint(0); i < 8; i++ {
@@ -95,8 +95,8 @@ func main() {
 
 ```
 
-- printf的%g會自動幫你選擇輸出浮點數最佳的精度
-- 但如果是資料表，用%e或者是%f會比較好，不然效率會很差
+- printf 的 %g 會自動幫你選擇輸出浮點數最佳的精度
+- 但如果是資料表，用 %e 或者是 %f 會比較好，不然效率會很差
 - [fmt doc](https://golang.org/pkg/fmt/)
 
 # 3.3 Complex Numbers
@@ -119,7 +119,7 @@ func main() {
 }
 ```
 - complex 64/128 對應 float 32/64
-- imag指的是虛數(imaginary litera)
+- imag 指的是虛數 (imaginary part)
 
 ---
 
@@ -142,7 +142,7 @@ func main() {
 }
 ```
 
-- bool不支持其他type的assign或者是轉換
+- bool 不支持其他 type 的 assignment 或者是轉換
 
 ---
 
@@ -155,7 +155,7 @@ import "fmt"
 
 func main() {
 		
-	//ASCII有32個控制字元同字母大小寫因此差32
+	//ASCII 有 32 個控制字元，同字母大小寫因此差 32
 	s := "CCNSccns"
 	fmt.Println(len(s))     // "8"
 	fmt.Println(s[0], s[4]) // "67 99" ('C' and 'c')
@@ -170,8 +170,8 @@ func main() {
 }
 ```
 
-- 好用的len()同Py
-- String跟Py的Tuple一樣immutable
+- 好用的 len() 同 Py
+- String 跟 Py 的 Tuple 一樣 immutable
 
 ---
 
@@ -188,7 +188,7 @@ func main() {
 
 ## 3.5.3 UTF-8
 
-- 我開始覺得他只是想提到Rob Pike & Ken Thompson (UTF-8創始者等於Go語言創始者)
+- 我開始覺得他只是想提到 Rob Pike & Ken Thompson (UTF-8 創始者等於 Go 語言創始者)
 - Go source files are always encoded in UTF-8
 - [unicode/utf-8 package](https://golang.org/pkg/unicode/utf8/) 
 
@@ -207,7 +207,7 @@ func main() {
 
 	fmt.Println(string(r))
 	fmt.Println(string(65))      // "A", not "65"
-	fmt.Println(string(0x4eac))  // "C"
+	fmt.Println(string(0x4eac))  // "京"
 	fmt.Println(string(1234567)) // invalid rune "�"
 }
 
@@ -217,13 +217,13 @@ func main() {
 
 ## 3.5.4 Strings and Byte Slices
 
-- 操作字串的四個重要Packages: **bytes, strings, strconv, and unicode**
+- 操作字串的四個重要 packages: **bytes, strings, strconv, and unicode**
 
-  - **strings**: 提供搜尋、取代、修剪(trimming)字串等等功能
+  - **strings**: 提供搜尋、取代、修剪 (trimming) 字串等等功能
     - [strings package](https://golang.org/pkg/strings/) 
-  - **bytes**: 跟string差不多，但在要持續增加string長度的情況下更有效率
-  - **strconv**: 將int, float, bool轉成string
-  - **unicode**: 用來判斷rune是不是Lower, Upper等等，也可以用來轉換
+  - **bytes**: 跟 string 差不多，但在要持續增加 string 長度的情況下更有效率
+  - **strconv**: 將 int, float, bool 轉成 string
+  - **unicode**: 用來判斷 rune 是不是 Lower, Upper 等等，也可以用來轉換
 
 ```go=
 // contain.go
@@ -257,7 +257,7 @@ func main() {
 	fmt.Println(strings.Compare("b", "a"))
 }
 ```
-## 3.5.5.Conversions between Strings and Numbers
+## 3.5.5 Conversions between Strings and Numbers
 
 - strconv
 
@@ -269,7 +269,7 @@ fmt.Println(y, strconv.Itoa(x)) // "123 123"
 
 ---
 
-# 3.6. Constants
+# 3.6 Constants
 
 - 單一宣告 vs 多重宣告
 - run at compile time, not at run time
@@ -297,13 +297,13 @@ fmt.Println(a, b, c, d) // "1 1 2 2"
 ```
 
 - 好潮
-- 不夠方便所以有了iota
+- 不夠方便所以有了 iota
 
-## 3.6.1. The Constant Generator **iota**
+## 3.6.1 The Constant Generator **iota**
 
 - iota
   - 不需要把相關的每個常量一個個宣告出來就能創造出來
-  - Go實作enums的方法
+  - Go 實作 enum 的方法
 
 ```go=
 //enum
@@ -314,7 +314,7 @@ func main() {
 	type Weekday int
 
 	const (
-		Sunday Weekday = iota //自動初始化為0
+		Sunday Weekday = iota //自動初始化為 0
 		Monday
 		Tuesday
 		Wednesday
@@ -368,7 +368,7 @@ func main() {
 ```
 
 
-## 3.6.2. Untyped Constants
+## 3.6.2 Untyped Constants
 
 - 無法被任何型態的變數所存的常量(數字太大)
 
@@ -407,7 +407,7 @@ func main() {
 }
 ```
 
-- 只有constant可以存成untyped，若是變數就會自動轉換
+- 只有 constant 可以存成 untyped，若是變數就會自動轉換
 - 為了避免麻煩還是自己寫好就好
 
 ```go=
@@ -427,8 +427,8 @@ f = 'a'                // untyped rune -> float64
 
 # 4.1 Arrays
 
-- 因為是**固定長度**的，所以在Go很少用
-- 用slices更加有彈性
+- 因為是**固定長度**的，所以在 Go 很少用
+- 用 slices 更加有彈性
 
 ```go
 //arrays.go
@@ -469,9 +469,9 @@ func main() {
 
 - 長度可變
 - composed by a pointer, a length, a capacity
-  - pointer指向第一個元素
-  - length代表slices中元素的數量, **len()**
-  - capacity是slices中最多能放入的元素量, **cap()**
+  - pointer 指向第一個元素
+  - length 代表 slice 中元素的數量, **len()**
+  - capacity 是 slice 中最多能放入的元素量, **cap()**
 - Slicing beyond cap(s) causes a panic, but slicing beyond len(s) extends the slice
 
 ![](https://i.imgur.com/vPFGhQF.jpg)
@@ -496,7 +496,7 @@ func main() {
 
 > append 沒有 side effect，所以要記得 assign 給自己喔 
 > [name=go愛用者]
-- Go也有new，兩者差別在new會回傳指標而make不會
+- Go 也有 new，兩者差別在 new 會回傳指標而 make 不會
 
 ```go=
 //slices.go
@@ -557,7 +557,7 @@ func main() {
 // 2d:  [[0] [1 2] [2 3 4]]
 ```
 
-## 4.2.1 In-Place Slice Techniques
+## 4.2.1 In-Place Slicing Techniques
 
 - append, pop, remove
 
@@ -587,7 +587,7 @@ func main() {
 
 # 4.3 Maps
 
-- In Go, a map is a reference to a hash table, and a map type is written map[K]V, where K and V are the typ es of its keys and values.
+- In Go, a map is a reference to a hash table, and a map type is written map[K]V, where K and V are the types of its keys and values.
 
 ```go=
 ages := make(map[string]int)
@@ -611,8 +611,8 @@ for name, age := range ages {
 }
 ```
 
-- 這樣枚舉的話會是randomly印出map
-- 若要有順序的印出需要先sort
+- 這樣枚舉的話會 randomly 印出 map
+- 若要有順序的印出需要先 sort
 
 ```go=
 import "sort"
@@ -774,12 +774,12 @@ p := Point{1, 2}
 q := Point{2, 1}
 fmt.Println(p.X == q.X && p.Y == q.Y) // "false"
 fmt.Println(p == q) // "false"
-````
+```
 
 ## 4.4.2 Struct Embedding and Anonymous Fields
 
-- struct裡面包另一個struct
-- 為了精簡fields的呼叫
+- Struct 裡面包另一個 struct
+- 為了精簡 fields 的呼叫
   - x.d.e.f → x.f 
 
 ```go=
@@ -829,7 +829,7 @@ func main() {
 }
 ```
 
-- **Circle**和**Point**變成了anonymous field, 造成宣告上error
+- **Circle** 和 **Point** 變成了 anonymous fields, 造成宣告上 error
 
 ```go=
 //延續
@@ -848,18 +848,18 @@ Spokes: 20, // NOTE: trailing comma necessary here (and at Radius)
 ```
 # 4.5 JSON
 
-- 介紹了一下JSON
+- 介紹了一下 JSON
   - mapping from string to value 
 
 
-- 在做Marshalling的時候是使用Struct field name作為JSON的field name
-  - 把資料轉成Json Format 
+- 在做 marshalling 的時候是使用 struct field name 作為 JSON 的 field name
+  - 把資料轉成 JSON format 
   - json.Marshal()
 
-- 輸出的改變是因為field tags
+- 輸出的改變是因為 field tags
 
-- Go的field tags可以是任何形式的String，但傳統上是key:"value"
-  - 宣告之後會成為那個field name的attribute 
+- Go 的 field tags 可以是任何形式的 string，但傳統上是 key:"value"
+  - 宣告之後會成為那個 field name 的 attribute 
 
 ```go=
 //marshal.go
@@ -873,8 +873,8 @@ import (
 
 type Movie struct {
 	Title  string
-	Year   int  `json:"released"`  // " " 中的是string literal(tag) 
-	Color  bool `json:"color,omitempty"` //用Color.Tag呼叫
+	Year   int  `json:"released"`  // " " 中的是 string literal (tag) 
+	Color  bool `json:"color,omitempty"` //用 Color.Tag 呼叫
 	Actors []string
 }
 
@@ -889,7 +889,7 @@ var movies = []Movie{
 }
 
 func main() {
-	//JSON格式化輸出，若單純用json.Marshal()會全部擠在一起很噁心
+	//JSON 格式化輸出，若單純用 json.Marshal() 會全部擠在一起很噁心
 	data, err := json.MarshalIndent(movies, "", " ")
 	if err != nil {
 		log.Fatalf("JSON marshaling failed: %s", err)
@@ -898,34 +898,34 @@ func main() {
 }
 ```
 
-- 也可以用unmarshal只取自己要的資料
+- 也可以用 Unmarshal 只取自己要的資料
 
 ```go=
 var titles []struct{ Title string }
 
 if err := json.Unmarshal(data, &titles); err != nil {
 
-        log.Fatalf("JSON unmarshaling failed: %s", err)
+        log.Fatalf("JSON unmarshalling failed: %s", err)
 }
 
 fmt.Println(titles) // "[{Casablanca} {Cool Hand Luke} {Bullitt}]"
 ```
-- 書這裡後來還有提供一個github issue tracker的做法，挺有趣的，不過code太長就不放了
+- 書裡後來還有提供一個 github issue tracker 的做法，挺有趣的，不過 code 太長就不放了
 
 
 # 4.6 Text and HTML Templates
 
-- 為甚麼需要text/template?
-  - 因為有時候printf無法滿足我們的需求 (Formatting)
+- 為什麼需要 text/template?
+  - 因為有時候 printf 無法滿足我們的需求 (formatting)
 
-- 用來自動產生text, html/templates是基於text/templates之上
+- 用來自動產生 text, html/templates 是基於 text/templates 之上
 
-- A template is a string or file containing one or more por tions enclosed in double braces, {{...}}, called actions.
+- A template is a string or file containing one or more portions enclosed in double braces, {{...}}, called actions.
 
 - dot(.) is a notion of the current value
-  - 類似c++ this 或是 python self 
+  - 類似 C++ this 或是 Python self 
 
-- 流程: template會先Parse丟入的text file再execute，最後回傳respose
+- 流程: Template 會先 parse 丟入的 text file 再 execute，最後回傳 response
 ```go=
 func main() {
  //Parse
@@ -952,7 +952,7 @@ a := Anime{"ID:INVADED",2020}
 ```
 
 - 當然也可有迴圈、if/else.....等操作來產生
-- template.Must用來檢查模板有沒有錯誤
+- template.Must 用來檢查模板有沒有錯誤
 
 
 ```go=
@@ -983,7 +983,7 @@ var issueList = template.Must(template.New("issuelist").Parse(`
 
 
 
-# Leetcode習題
+# Leetcode 習題
 
 - [Sudoku solver](https://leetcode.com/problems/sudoku-solver/#) 
 
@@ -993,7 +993,7 @@ func solveSudoku(board [][]byte) {
 	solve(board, 0)
 }
 
-// k是index
+// k 是 index
 func solve(board [][]byte, k int) bool {
 	if k == 81 {
 		return true
@@ -1004,10 +1004,10 @@ func solve(board [][]byte, k int) bool {
 		return solve(board, k+1)
 	}
 
-	// 左上角的index
+	// 左上角的 index
 	bi, bj := r/3*3, c/3*3
 
-	// 檢查 b 能不能放進去board
+	// 檢查 b 能不能放進去 board
 	isValid := func(b byte) bool {
 		for n := 0; n < 9; n++ {
 			if board[r][n] == b ||
