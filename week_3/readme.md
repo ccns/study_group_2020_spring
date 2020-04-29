@@ -1,7 +1,3 @@
----
-tags: ccns
----
-
 # 讀書會 Week 3
 
 ## Chapter.5 Functions
