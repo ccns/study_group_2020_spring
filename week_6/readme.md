@@ -1,7 +1,3 @@
----
-tags: CCNS
----
-
 # 讀書會 Week 6
 
 # CH8 Goroutines and Channels
