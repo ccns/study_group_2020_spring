@@ -1,7 +1,3 @@
----
-tags: CCNS
----
-
 # 讀書會 Week 2
 
 # CH3 Basic Data Type
